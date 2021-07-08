@@ -31,8 +31,11 @@ export class PlayComponent implements OnInit {
     const gameIdFromRoute = Number(routeParams.get('id'));
 
     this.cardService.getCardsList(gameIdFromRoute).subscribe(cardList =>{
-      this.cardsToGuess=cardList;
-      this.guessingCard= this.cardsToGuess.pop();
+      this.cardsToGuess = cardList;
+      const index = Math.floor(Math.random() * this.cardsToGuess.length)
+      this.guessingCard = this.cardsToGuess[index];
+      this.cardsToGuess.splice(index, 1)
+      console.log(this.cardsToGuess)
     })
 
   }
@@ -50,10 +53,14 @@ export class PlayComponent implements OnInit {
     if(chosenDate==correctDate){
       if (this.guessingCard) {
         this.guessedCards.push(this.guessingCard)
-        this.cardsToGuess.slice(this.cardsToGuess.length, 1)
-        this.guessingCard=this.cardsToGuess.pop()
+        const index = Math.floor(Math.random() * this.cardsToGuess.length)
+        this.guessingCard = this.cardsToGuess[index];
+        this.cardsToGuess.splice(index, 1)
+
+
       }
 
-    }else console.log("Try again !")
+    }else
+      alert('https://media.tenor.com/images/9ddd7a97409c48e575a147c377cef97c/tenor.gif')
   }
 }

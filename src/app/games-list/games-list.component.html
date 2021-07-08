@@ -24,7 +24,7 @@
       <td>{{game.cardList.length}}</td>
       <td><button [routerLink]="['/edit/',game.id]" class="button-add-timeline">Editer</button></td>
       <td><button [routerLink]="['/play/',game.id]" class="button-add-timeline">Jouer</button></td>
-      <td><button [routerLink]="['/delete/',game.id]" class="button-add-timeline" (ngSubmit)="onDeleteChoice(game.id)">Supprimer</button></td>
+      <td><button class="button-add-timeline" (click)="onDeleteChoice(game.id)">Supprimer</button></td>
     </tr>
     </tbody>
   </table>
