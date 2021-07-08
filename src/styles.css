@@ -1,1 +1,91 @@
-/* You can add global styles to this file, and also import other style files */
+.title{
+  color: purple;
+  font-family: "Comic Sans MS";
+  text-align: center;
+  padding: 10px;
+}
+
+table,th,tr,td{
+  margin: auto;
+  color: purple;
+  text-align: center;
+  border : 1px solid purple;
+  border-collapse: collapse;
+}
+
+.table{
+  width: 90%;
+  border : 2px solid purple;
+}
+
+.center{
+  text-align: center;
+  padding: 20px;
+}
+
+.button-timeline,.button-add-timeline{
+  color: white;
+  font-family: "Comic Sans MS";
+  background-color: deeppink;
+  border-radius: 5px;
+}
+
+.button-timeline{
+  line-height: 40px;
+  font-size: 20px;
+}
+
+.guessLine{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.guessElement{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.editLine{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(234,222,218,1);
+  margin: auto;
+  border-radius: 5px;
+  line-height: 50px;
+  width: fit-content;
+}
+
+.editCardElement{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card{
+  border: thin solid black;
+  width: 300px;
+  height: 350px;
+  background-color: rgba(234,222,218,1);
+  margin: 0px auto 20px;
+  border-radius: 5px;
+}
+
+.card-image{
+  max-width: 250px;
+  max-height: 150px;
+}
+
+.card-description{
+  color: black;
+  font-family: "Comic Sans MS";
+  text-align: center;
+  padding: 10px;
+}
+
+.guessedCards{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 20px;
+}

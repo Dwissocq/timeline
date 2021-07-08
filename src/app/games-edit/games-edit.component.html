@@ -1,0 +1,58 @@
+<div class="title">
+  <h1>Détails du Timeline</h1>
+</div>
+<div class="editLine">
+  <form [formGroup]="saveForm" (ngSubmit)="onSaveChoice()" class="guessElement">
+    <label for="gameName" class="guessElement">Nom : </label>
+    <input type="text" formControlName="name" id="gameName">
+    <label for="gameCategory" class="guessElement">Catégorie : </label>
+    <input type="text" formControlName="category" id="gameCategory">
+    <label for="gameCreationDate" class="guessElement">Date de création : </label>
+    <input type="datetime-local" formControlName="creationDate" id="gameCreationDate">
+    <button type="submit" class="guessElement">Sauver le Timeline</button>
+  </form>
+</div>
+<div class="title">
+  <h2>Edition d'une carte</h2>
+</div>
+<div class="editLine">
+  <form class="editCardElement">
+    <button type="submit" class="editCardElement">Nouvelle carte</button>
+    <label for="cardName" class="editCardElement">Nom : </label>
+    <input type="text" id="cardName">
+    <label for="cardCreationDate" class="editCardElement">Date de création : </label>
+    <input type="datetime-local" id="cardCreationDate">
+    <label for="cardImageUrl" class="editCardElement">Url d'image : </label>
+    <input type="text" id="cardImageUrl">
+    <label for="cardDescription" class="editCardElement">Description : </label>
+    <input type="text" id="cardDescription">
+    <button type="submit" class="editCardElement">Sauver la carte</button>
+  </form>
+</div>
+<div class="title">
+  <h2>Liste des cartes</h2>
+</div>
+<div class="center">
+  <table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Nom</th>
+    <th>Date</th>
+    <th>Url d'image</th>
+    <th>Description</th>
+    <th>Editer ?</th>
+    <th>Supprimer ?</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let card of cardsList | async">
+      <td>{{card.id}}</td>
+      <td>{{card.name}}</td>
+      <td>{{card.date}}</td>
+      <td>{{card.imageUrl}}</td>
+      <td>{{card.description}}</td>
+      <td><button class="button-add-timeline">Editer</button></td>
+      <td><button class="button-add-timeline">Supprimer</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

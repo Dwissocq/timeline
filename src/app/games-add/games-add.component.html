@@ -1,0 +1,14 @@
+<div class="title">
+  <h1>Détails du Timeline</h1>
+</div>
+<div class="editLine">
+  <form [formGroup]="addForm" (ngSubmit)="onAddChoice()" class="guessElement">
+    <label for="gameName" class="guessElement">Nom : </label>
+    <input type="text" formControlName="name" id="gameName">
+    <label for="gameCategory" class="guessElement">Catégorie : </label>
+    <input type="text" formControlName="category" id="gameCategory">
+    <label for="gameCreationDate" class="guessElement">Date de création : </label>
+    <input type="datetime-local" formControlName="creationDate" id="gameCreationDate">
+    <button type="submit" class="guessElement">Sauver le Timeline</button>
+  </form>
+</div>

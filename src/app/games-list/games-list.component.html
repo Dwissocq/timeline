@@ -1,0 +1,31 @@
+<div class="center">
+  <button [routerLink]="['/add']" class="button-add-timeline">Ajouter un Timeline</button>
+</div>
+<div class="center">
+  <table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Nom</th>
+    <th>Catégorie</th>
+    <th>Date de création</th>
+    <th>Date de mise à jour</th>
+    <th>Nombre de cartes</th>
+    <th>Editer</th>
+    <th>Jouer</th>
+    <th>Supprimer</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let game of gamesList | async">
+      <td>{{game.id}}</td>
+      <td>{{game.name}}</td>
+      <td>{{game.category}}</td>
+      <td>{{game.creationDate}}</td>
+      <td>{{game.updateDate}}</td>
+      <td>{{game.cardList.length}}</td>
+      <td><button [routerLink]="['/edit/',game.id]" class="button-add-timeline">Editer</button></td>
+      <td><button [routerLink]="['/play/',game.id]" class="button-add-timeline">Jouer</button></td>
+      <td><button [routerLink]="['/delete/',game.id]" class="button-add-timeline" (ngSubmit)="onDeleteChoice(game.id)">Supprimer</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
