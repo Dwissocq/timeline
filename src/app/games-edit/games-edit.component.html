@@ -8,7 +8,7 @@
     <label for="gameCategory" class="guessElement">Catégorie : </label>
     <input type="text" formControlName="category" id="gameCategory">
     <label for="gameCreationDate" class="guessElement">Date de création : </label>
-    <input type="datetime-local" formControlName="creationDate" id="gameCreationDate">
+    <input type="date" formControlName="creationDate" id="gameCreationDate">
     <button type="submit" class="guessElement">Sauver le Timeline</button>
   </form>
 </div>
@@ -18,14 +18,14 @@
 <div class="editLine">
   <form class="editCardElement">
     <button type="submit" class="editCardElement">Nouvelle carte</button>
-    <label for="cardName" class="editCardElement">Nom : </label>
-    <input type="text" id="cardName">
-    <label for="cardCreationDate" class="editCardElement">Date de création : </label>
-    <input type="datetime-local" id="cardCreationDate">
-    <label for="cardImageUrl" class="editCardElement">Url d'image : </label>
-    <input type="text" id="cardImageUrl">
-    <label for="cardDescription" class="editCardElement">Description : </label>
-    <input type="text" id="cardDescription">
+    <label for="name" class="editCardElement">Nom : </label>
+    <input type="text" id="name">
+    <label for="creationDate" class="editCardElement">Date de création : </label>
+    <input type="date" id="creationDate">
+    <label for="imageUrl" class="editCardElement">Url d'image : </label>
+    <input type="text" id="imageUrl">
+    <label for="description" class="editCardElement">Description : </label>
+    <input type="text" id="description">
     <button type="submit" class="editCardElement">Sauver la carte</button>
   </form>
 </div>

@@ -14,6 +14,7 @@ export class GamesEditComponent implements OnInit {
   cardsList: any;
 
   saveForm = this.formBuilder.group({
+    id: 0,
     name: '',
     category: '',
     creationDate: ''
@@ -30,6 +31,17 @@ export class GamesEditComponent implements OnInit {
 
     this.cardsList = this.cardService.getCardsList(gameIdFromRoute)
 
+    this.gameService.getGamesList().subscribe(gamesList=> {
+        for (let game of gamesList){
+          if(game.id===gameIdFromRoute)
+          this.saveForm.patchValue({
+            id: game.id,
+            name: game.name,
+            category: game.category,
+            creationDate: game.creationDate
+          })
+        }
+      })
   }
 
   onSaveChoice(){
