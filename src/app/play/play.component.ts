@@ -73,6 +73,9 @@ export class PlayComponent implements OnInit {
       this.guessingCard = this.cardsToGuess[index];
       this.cardsToGuess.splice(index, 1)
 
+      // Desérialisation du Json "this.guessingCard.date" en un objet Date afin d'en calculer l'année par getFullYear()
+      this.dateClue = new Date(this.guessingCard.date).getFullYear()
+
       this.dateForm.reset()
 
     } else {
