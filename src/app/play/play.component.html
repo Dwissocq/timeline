@@ -1,20 +1,25 @@
 <div class="guessLine">
   <form [formGroup]="dateForm" (ngSubmit)="onDateChoice()" class="guessElement">
     <label for="enterDate"></label>
-    <input type="text" formControlName="date" id="enterDate" value="Entrez la date">
+    <input type="text" formControlName="date" id="enterDate">
     <button type="submit" class="guessElement">Deviner</button>
-    <span class="guessElement">-- ? --</span>
+    <span class="guessElement" >-- ? --</span>
+    <span class="hide">{{dateClue}}</span>
   </form>
 </div>
-<div class="title">
+<div *ngIf="guessingCard" class="title">
   <h2>Carte à deviner</h2>
-</div>
-<div class="center">
-  <div *ngIf="guessingCard" class="card">
-    <h2 class="title">{{guessingCard.name}}</h2>
-    <p><img src="{{guessingCard.imageUrl}}" class="card-image"></p>
-    <p class="card-description">{{guessingCard.description}}</p>
+  <div class="center">
+    <div class="card">
+      <h2 class="title">{{guessingCard.name}}</h2>
+      <p><img src="{{guessingCard.imageUrl}}" class="card-image"></p>
+      <p class="card-description">{{guessingCard.description}}</p>
+    </div>
   </div>
+</div>
+<div *ngIf="guessingCard==null" class="victory">
+  <h2 class="title">You win !!</h2>
+  <img src="https://i.pinimg.com/originals/59/59/b4/5959b4f7533dbd6054ba7924e08c248b.gif">
 </div>
 <div class="title">
   <h2>Cartes trouvées</h2>

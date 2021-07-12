@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { CardService } from "../card.service";
-import { ActivatedRoute } from "@angular/router";
-import { Observable } from 'rxjs';
-import { Card } from '../card';
-import { FormBuilder } from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {CardService} from "../card.service";
+import {ActivatedRoute} from "@angular/router";
+import {Observable} from 'rxjs';
+import {Card} from '../card';
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-play',
@@ -15,14 +15,17 @@ export class PlayComponent implements OnInit {
   cardsList: Observable<Card[]> | undefined;
 
   dateForm = this.formBuilder.group({
-    date: '',
+    date: 'Entrez la date',
   });
+
+  dateClue: number = 0
 
   cardsToGuess: Card[] = []
   guessingCard: Card | undefined
   guessedCards: Card[] = []
 
-  constructor(private cardService: CardService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
+  constructor(private cardService: CardService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
 
@@ -30,37 +33,50 @@ export class PlayComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const gameIdFromRoute = Number(routeParams.get('id'));
 
-    this.cardService.getCardsList(gameIdFromRoute).subscribe(cardList =>{
+    // Get the cards's list of the current game
+    this.cardService.getCardsList(gameIdFromRoute).subscribe(cardList => {
       this.cardsToGuess = cardList;
+
+      // Randomize the guessing card
       const index = Math.floor(Math.random() * this.cardsToGuess.length)
       this.guessingCard = this.cardsToGuess[index];
-      this.cardsToGuess.splice(index, 1)
-      console.log(this.cardsToGuess)
-    })
 
+      // Take back the guessing card from the list of cards to guess
+      this.cardsToGuess.splice(index, 1)
+
+      // Desérialisation du Json "this.guessingCard.date" en un objet Date afin d'en calculer l'année par getFullYear()
+      this.dateClue = new Date(this.guessingCard.date).getFullYear()
+    })
   }
 
   onDateChoice() {
-
-    // Si la date est bonne alors je change la gessingCard et je remplis mon tableau de guessedCard
-    // Sinon je dis que le joueur est nul
 
     let chosenDate = this.dateForm.value.date
 
     // @ts-ignore
     let correctDate = new Date(this.guessingCard?.date).getFullYear()
 
-    if(chosenDate==correctDate){
+    // If dates are matching, put the guessing card on guessed cards
+    if (chosenDate == correctDate) {
       if (this.guessingCard) {
         this.guessedCards.push(this.guessingCard)
-        const index = Math.floor(Math.random() * this.cardsToGuess.length)
-        this.guessingCard = this.cardsToGuess[index];
-        this.cardsToGuess.splice(index, 1)
-
-
       }
 
-    }else
-      alert('https://media.tenor.com/images/9ddd7a97409c48e575a147c377cef97c/tenor.gif')
+      // Order the guessed cards by date
+      this.guessedCards.sort(function (a, b) {
+        return new Date(a.date).getFullYear() - new Date(b.date).getFullYear();
+      });
+
+      // Randomize the new guessing card
+      // Take back the guessing card from the list of cards to guess
+      const index = Math.floor(Math.random() * this.cardsToGuess.length)
+      this.guessingCard = this.cardsToGuess[index];
+      this.cardsToGuess.splice(index, 1)
+
+      this.dateForm.reset()
+
+    } else {
+      alert('Non, ce n\'est pas cela ! Essaye encore !')
+    }
   }
 }

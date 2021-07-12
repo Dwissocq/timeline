@@ -46,6 +46,15 @@ table,th,tr,td{
   margin-right: 20px;
 }
 
+.hide {
+  display: none;
+}
+
+.guessElement:hover + .hide {
+  display: inline;
+  color: red;
+}
+
 .editLine{
   display: flex;
   align-items: center;
@@ -86,6 +95,17 @@ table,th,tr,td{
 .guessedCards{
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
+  padding: 20px;
+}
+
+.victory{
+  border: thin solid black;
+  width: 500px;
+  height: content-box;
+  background-color: rgba(234,222,218,1);
+  margin: 0px auto 20px;
+  border-radius: 5px;
   text-align: center;
   padding: 20px;
 }

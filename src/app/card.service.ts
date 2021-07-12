@@ -13,8 +13,13 @@ export class CardService {
 
   constructor(private http : HttpClient) { }
 
+  // Get the card's list of a Timeline game
   getCardsList(id: number){
 
     return this.http.get<Card[]>(this.baseAPIUrl+id+'/card');
+  }
+
+  getCardsListByDate(id: number){
+    return this.http.get<Card[]>(this.baseAPIUrl+id+'/card')
   }
 }

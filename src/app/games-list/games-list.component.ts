@@ -18,6 +18,8 @@ export class GamesListComponent implements OnInit {
   onDeleteChoice(id: number){
 
     this.gameService.deleteGame(id).subscribe();
+
+    window.location.reload()
   }
 
 }

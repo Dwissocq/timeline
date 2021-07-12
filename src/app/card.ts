@@ -1,5 +1,5 @@
 
-// Définition du format d'une carte Timeline reçue par l'API
+// Definition of a card received by API
 
 export interface Card{
   "id": number,

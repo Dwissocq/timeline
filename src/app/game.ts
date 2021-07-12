@@ -1,5 +1,5 @@
 
-// Définition du format d'un game Timeline reçu par l'API
+// Definition of a game Timeline received by API
 
 import {Card} from "./card";
 

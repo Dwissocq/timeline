@@ -29,6 +29,7 @@ export class GamesEditComponent implements OnInit {
     const gameIdFromRoute = Number(routeParams.get('id'));
 
     this.cardsList = this.cardService.getCardsList(gameIdFromRoute)
+
   }
 
   onSaveChoice(){
