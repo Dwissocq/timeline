@@ -18,8 +18,4 @@ export class CardService {
 
     return this.http.get<Card[]>(this.baseAPIUrl+id+'/card');
   }
-
-  getCardsListByDate(id: number){
-    return this.http.get<Card[]>(this.baseAPIUrl+id+'/card')
-  }
 }
